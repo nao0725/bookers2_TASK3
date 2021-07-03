@@ -47,7 +47,27 @@
                 <%= link_to "Destroy", book_path(@book_detail), method: :delete,class: "btn btn-sm btn-secondary bg-danger text-white" ,"data-confirm" => "本当に削除しますか？"%>
               <% end %>
           </td>
+          <td>
+            <p>コメント数：<%= @book_detail.book_comments.count %></p>
+          </td>
         </tr>
+        
+          <!--コメント機能-->
+          <td>
+            <% @book_detail.book_comments.each do |book_comment|%>
+            
+             <p>
+              <%= attachment_image_tag book_comment.user, :profile_image,fallback: "no_image.jpg", size:'40x40' %><br>
+              <%= link_to book_comment.user.name, user_path(@book_detail.user.id) %>
+             </p>
+             <p><%= book_comment.user.name %></p>
+            <% end %>
+          </td>
+          <td>
+            <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
+              <%=f.text_area:comment,rows:"5" %>
+              <%= f.submit "送信" %>
+          </td>
         </tbody>
       </table>
     </div>
