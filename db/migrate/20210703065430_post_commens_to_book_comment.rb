@@ -1,6 +1,6 @@
 class PostCommensToBookComment < ActiveRecord::Migration[5.2]
     def change
-    create_table :book_comment do |t|
+    create_table :book_comments do |t|
       t.text :comment
       t.integer :user_id
 
