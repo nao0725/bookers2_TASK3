@@ -50,10 +50,7 @@ class BooksController < ApplicationController
     redirect_to books_path
    end
    
-    def likes
-      @book = Book.find_by(id: params[:id])
-      @favorites = Favorite.where(book_id: @book.id)
-    end
+   
 
 
   private
