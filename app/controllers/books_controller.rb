@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+   before_action :authenticate_user!
    before_action :correct_user, only: [:edit, :update]
 
   def create
@@ -48,6 +49,12 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
    end
+   
+    def likes
+      @book = Book.find_by(id: params[:id])
+      @favorites = Favorite.where(book_id: @book.id)
+    end
+
 
   private
 
