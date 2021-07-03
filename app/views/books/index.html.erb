@@ -46,7 +46,7 @@
           <!--いいね機能-->
           
           <td>
-            <% if @book.favorited_by?(user_id: @current_user.id, book_id: @book.id) %>
+            <%# if @book.favorited_by?(user_id: @current_user.id, book_id: @book.id) %>
               <p>
                 <%= link_to favorites_path(@book), method: :delete do %>
                  ♥<%= @book.favorites.count %> いいね
